@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <script>
+        //////////////////////////////////////////////////////////////////////////////////////
+        console.log("----------Exercitiul 1----------");
+
+        let n = 749.0;
+        const moneda = "EUR";
+        switch (moneda) {
+            case "EUR":
+                n /= 4.8338;
+                console.log(`749.0 RON = ${n} ${moneda}`);
+                break;
+            case "HUF":
+                n *= 73.99;
+                console.log(`749.0 RON = ${n} ${moneda}`);
+                break;
+            case "USD":
+                n /= 4.4477;
+                console.log(`749.0 RON = ${n} ${moneda}`);
+                break;
+            default:
+                console.log("Nu se poate face conversia in moneda data!");
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        console.log("\n----------Exercitiul 2----------");
+
+        function tipul(a) {
+            console.log(`Variabila este de tipul: ${typeof a}`);
+        }
+
+        var s = "mere";
+        tipul(s);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        console.log("\n----------Exercitiul 3----------");
+
+        function initiale(fraza) {
+            let i = 0;
+            let init = "";
+            init += fraza[i];
+            do {
+                if (fraza[i] == ' ') {
+                    init += fraza[i + 1];
+                    i++;
+                }
+                i++;
+            } while (fraza[i] != '.');
+            console.log(`Initialele frazei sunt: ${init} \n`);
+        }
+
+        const fraze = [
+            "Quisque faucibus ipsum id nibh egestas bibendum.",
+            "Phasellus tincidunt sapien nec est tempus lacinia.",
+            "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+            "Praesent a magna a ligula gravida sodales eu ut erat.",
+            "Ut eleifend velit vitae ipsum mattis viverra."
+        ]
+        for (let i = 0; i < fraze.length; i++) {
+            initiale(fraze[i]);
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        console.log("\n----------Exercitiul 4----------");
+
+        class Shape {
+            constructor(culoare, laturi) {
+                this.culoare = culoare;
+                this.laturi = laturi;
+            }
+
+            perimetru() {
+                let total = 0;
+                for (let i = 0; i < this.laturi.length; i++)
+                    total += this.laturi[i];
+                return total;
+            }
+
+            semiperimetru() {
+                return this.perimetru() / 2;
+            }
+
+            tipul() {
+                switch (this.laturi.length) {
+                    case 3:
+                        console.log(`Triunghi -> ${this.laturi.length} laturi`);
+                        break;
+                    case 4:
+                        console.log(`Patrulater -> ${this.laturi.length} laturi`);
+                        break;
+                    case 5:
+                        console.log(`Pentagon -> ${this.laturi.length} laturi`);
+                        break;
+                    case 6:
+                        console.log(`Hexagon -> ${this.laturi.length} laturi`);
+                        break;
+                    default:
+                        console.log("WORK IN PROGRESS");
+                }
+            }
+        }
+
+        const lat = [3, 5, 7, 2, 8, 10];
+        const a = new Shape("verde", lat);
+        a.tipul();
+        console.log(`Culoarea formei este: ${a.culoare}`);
+        console.log(`Perimetrul este: ${a.perimetru()}`);
+        console.log(`Semierimetrul este: ${a.semiperimetru()}`);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        console.log("\n----------Exercitiul 5----------");
+
+        class Patrat extends Shape {
+            constructor(culoare, laturi) {
+                if (laturi.length < 4) {
+                    const l = [laturi[0], laturi[0], laturi[0], laturi[0]];
+                    super(culoare, l);
+                }
+                if (laturi.length == 4)
+                    super(culoare, laturi);
+            }
+
+            aria() {
+                return this.laturi[0] * this.laturi[0];
+            }
+        }
+
+        let l = [4];
+        const p = new Patrat("rosu", l);
+        p.tipul();
+        console.log(`Perimetrul este: ${p.perimetru()}`);
+        console.log(`Semierimetrul este: ${p.semiperimetru()}`);
+        console.log(`Aria patratului este: ${p.aria()}`);
+        console.log(`Culoarea patratului este: ${p.culoare}\n\n`);
+
+
+        class Triunghi extends Shape {
+            constructor(culoare, laturi) {
+                super(culoare, laturi);
+            }
+
+            aria() {
+                const sp = this.semiperimetru();
+                const l1 = this.laturi[0];
+                const l2 = this.laturi[1];
+                const l3 = this.laturi[2];
+                return Math.sqrt(sp * (sp - l1) * (sp - l2) * (sp - l3));
+            };
+        }
+
+        l = [4, 7, 5];
+        const t = new Triunghi("albastru", l);
+        t.tipul();
+        console.log(`Perimetrul este: ${t.perimetru()}`);
+        console.log(`Semierimetrul este: ${t.semiperimetru()}`);
+        console.log(`Aria tiunghiului este: ${t.aria()}`);
+        console.log(`Culoarea tiunghiului este: ${t.culoare}`);
+    </script>
+</body>
