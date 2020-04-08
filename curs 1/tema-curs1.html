@@ -1,28 +1,31 @@
 <!DOCTYPE html>
+
 <head>
 
 </head>
+
 <body>
     <script>
         console.log("Exercitiu 2")
-        let raza=10;
-        const pi=3.14;
-        const aria = pi*raza*raza;
+        const raza = 10;
+        const PI = 3.14;
+        const aria = PI * raza * raza;
         console.log("Aria este: ", aria);
 
-        console.log("Exercitiu 3")
-        let filme = ["Avengers", "Hunger games", "Avatar", "Now you see me", "Beautiful mind"];
-        for(let i=0;i<filme.length;i++)
+        console.log("\nExercitiu 3")
+        const filme = ["Avengers", "Hunger games", "Avatar", "Now you see me", "Beautiful mind"];
+        for (let i = 0; i < filme.length; i++)
             console.log("Pe locul ", i, " se afla filmul: ", filme[i]);
 
-        console.log("Exercitiu 4")
-        let numere = [5, 3, "1", 7, "9", 30, "45", 7];
-        let min=numere[0], max=numere[0];
-        for(let i=1;i<numere.length;i++){
-            if(numere[i]>max)
-                max=numere[i];
-            if(numere[i]<min)
-                min=numere[i];
+        console.log("\nExercitiu 4")
+        const numere = [5, 3, "1", 7, "9", 30, "45", 7];
+        let min = numere[0]
+        let max = numere[0];
+        for (let i = 1; i < numere.length; i++) {
+            if (numere[i] > max)
+                max = numere[i];
+            if (numere[i] < min)
+                min = numere[i];
         }
         console.log("Nr maxim e: ", max);
         console.log("Nr minim e: ", min);
